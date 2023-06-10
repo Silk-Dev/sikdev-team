@@ -1,8 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import UserCard from "../components/UserCard.astro";
 ---
 
 <Layout>
-    <Header/>
+    <Header />
+    <section id="contributorsList" class="container">
+        {Array.from([...Array(10)]).map((index) => <UserCard />)}
+    </section>
 </Layout>
+
+<style>
+    #contributorsList {
+        width: 100%;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+</style>
