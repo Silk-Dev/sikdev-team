@@ -3,37 +3,97 @@
         <img
             src="https://avatars.githubusercontent.com/u/49798649"
             alt="userAvatar"
+            class="roundAvatar"
+        />
+        <img
+            src="https://avatars.githubusercontent.com/u/49798649"
+            alt="userAvatar"
+            class="animatedAvatar"
         />
     </div>
     <h3 class="userUserName">AymKh</h3>
+
+    <div class="hoverOverlay"></div>
+    <button class="callToAction btn btn-outline-secondary">view profile</button>
 </div>
 
-<style>
+<style lang="scss">
     .userCard {
         width: 100%;
+        max-height: 200px;
         background-color: var(--bg-color-2);
         border: 1px solid var(--border-color-2);
         border-radius: 0.5rem;
         overflow: hidden;
+        position: relative;
+
+        .userAvatar {
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+
+            .roundAvatar {
+                width: 100px;
+                border-radius: 50%;
+                margin: 0 auto;
+                transition: ease-in-out 0.5s;
+            }
+
+            .animatedAvatar {
+                display: none;
+            }
+        }
+
+        .userUserName {
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: var(--text-color-1);
+        }
+
+        .callToAction {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-size: 0.8rem;
+            text-transform: capitalize;
+            color: var(--text-color-1);
+            z-index: 10;
+        }
+
+        .hoverOverlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(248, 50, 50, 0.5);
+            z-index: 8;
+            display: none;
+        }
     }
 
-    .userAvatar {
-        width: 100%;
-        padding: 1rem 0;
-        text-align: center;
-    }
+    // ANIMATIONS
+    .userCard {
+        &:hover .roundAvatar,
+        &:hover .userUserName {
+            display: none;
+        }
 
-    .userAvatar img {
-        width: 100px;
-        border-radius: 50%;
-        margin: 0 auto;
-    }
+        &:hover .animatedAvatar {
+            display: block;
+            position: absolute;
+            width: 100%;
+            top: 0;
+        }
 
-    .userUserName {
-        text-align: center;
-        padding: 1rem 0;
-        font-size: 1.5rem;
-        font-weight: 200;
-        color: var(--text-color-1);
+        &:hover .callToAction,
+        &:hover .hoverOverlay {
+            display: block;
+        }
     }
 </style>
