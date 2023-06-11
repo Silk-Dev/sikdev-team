@@ -2,20 +2,12 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import UserCard from "../components/UserCard.astro";
+import GridLayout from "../layouts/GridLayout.astro";
 ---
 
 <Layout>
     <Header />
-    <section id="contributorsList" class="container">
+    <GridLayout>
         {Array.from([...Array(10)]).map((index) => <UserCard />)}
-    </section>
+    </GridLayout>
 </Layout>
-
-<style>
-    #contributorsList {
-        width: 100%;
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-</style>
