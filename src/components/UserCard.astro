@@ -1,17 +1,17 @@
+---
+const { user } = Astro.props;
+---
+
 <div class="userCard">
     <div class="userAvatar">
         <img
-            src="https://avatars.githubusercontent.com/u/49798649"
+            src={user.picture.thumbnail}
             alt="userAvatar"
             class="roundAvatar"
         />
-        <img
-            src="https://avatars.githubusercontent.com/u/49798649"
-            alt="userAvatar"
-            class="animatedAvatar"
-        />
+        <img src={user.picture.large} alt="userAvatar" class="animatedAvatar" />
     </div>
-    <h3 class="userUserName">AymKh</h3>
+    <h3 class="userUserName">{user.name.first} {user.name.last}</h3>
 
     <div class="hoverOverlay"></div>
     <button class="callToAction btn btn-outline-secondary">view profile</button>
@@ -21,6 +21,7 @@
     .userCard {
         width: 100%;
         max-height: 200px;
+        min-height: 200px;
         background-color: var(--bg-color-2);
         border: 1px solid var(--border-color-2);
         border-radius: 0.5rem;
