@@ -86,6 +86,7 @@ const { user } = Astro.props;
             top: 0;
             animation: scale-up-center 0.2s ease-in-out;
             animation-fill-mode: forwards;
+            animation-direction: alternate;
         }
 
         &:hover .callToAction,
@@ -94,17 +95,40 @@ const { user } = Astro.props;
         }
     }
 
+    .reverseAnimation {
+        animation: scale-down-center 0.1s ease-in-out;
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
+    }
+
     @keyframes scale-up-center {
         0% {
-            // transform: scale(0.5);
         }
         100% {
-            transform: scale(1);
+            transform: scale(1.2);
             border-radius: 0;
+        }
+    }
+    @keyframes scale-down-center {
+        0% {
+            transform: scale(1.2);
+            border-radius: 0;
+        }
+        100% {
+            transform: scale(0.4);
+            border-radius: 50%;
         }
     }
 </style>
 
 <script>
-    import anime from "animejs";
+    const userCards = document.querySelectorAll(".userCard");
+
+    userCards.forEach((card) => {
+        card?.addEventListener("mouseout", () => {
+            card.querySelector(".roundAvatar")?.classList.add(
+                "reverseAnimation"
+            );
+        });
+    });
 </script>
