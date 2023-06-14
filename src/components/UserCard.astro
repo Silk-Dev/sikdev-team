@@ -4,12 +4,8 @@ const { user } = Astro.props;
 
 <div class="userCard">
     <div class="userAvatar">
-        <img
-            src={user.picture.thumbnail}
-            alt="userAvatar"
-            class="roundAvatar"
-        />
-        <img src={user.picture.large} alt="userAvatar" class="animatedAvatar" />
+        <img src={user.picture.large} alt="userAvatar" class="roundAvatar" />
+        <!-- <img src={user.picture.large} alt="userAvatar" class="animatedAvatar" /> -->
     </div>
     <h3 class="userUserName">{user.name.first} {user.name.last}</h3>
 
@@ -30,27 +26,30 @@ const { user } = Astro.props;
 
         .userAvatar {
             width: 100%;
-            padding: 1rem 0;
             text-align: center;
 
             .roundAvatar {
-                width: 100px;
+                width: 100%;
+                transform: scale(0.4);
                 border-radius: 50%;
                 margin: 0 auto;
-                transition: ease-in-out 0.5s;
-            }
-
-            .animatedAvatar {
-                display: none;
+                position: relative;
+                top: -2rem;
             }
         }
 
         .userUserName {
+            width: fit-content;
+            display: block;
             text-align: center;
-            padding: 1rem 0;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 200;
             color: var(--text-color-1);
+
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .callToAction {
@@ -72,7 +71,7 @@ const { user } = Astro.props;
             height: 100%;
             top: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.75);
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 8;
             display: none;
         }
@@ -80,16 +79,13 @@ const { user } = Astro.props;
 
     // ANIMATIONS
     .userCard {
-        &:hover .roundAvatar,
         &:hover .userUserName {
             display: none;
         }
-
-        &:hover .animatedAvatar {
-            display: block;
-            position: absolute;
-            width: 100%;
+        &:hover .roundAvatar {
             top: 0;
+            animation: scale-up-center 0.2s ease-in-out;
+            animation-fill-mode: forwards;
         }
 
         &:hover .callToAction,
@@ -97,4 +93,18 @@ const { user } = Astro.props;
             display: block;
         }
     }
+
+    @keyframes scale-up-center {
+        0% {
+            // transform: scale(0.5);
+        }
+        100% {
+            transform: scale(1);
+            border-radius: 0;
+        }
+    }
 </style>
+
+<script>
+    import anime from "animejs";
+</script>
