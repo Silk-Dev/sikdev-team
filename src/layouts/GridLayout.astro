@@ -1,0 +1,12 @@
+<section id="contributorsList" class="container">
+    <slot />
+</section>
+
+<style>
+    #contributorsList {
+        width: 100%;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+</style>

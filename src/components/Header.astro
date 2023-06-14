@@ -1,0 +1,66 @@
+<header class="d-flex flex-column align-items-center justify-content-center">
+    <main class="container">
+        <h1>silkdev team</h1>
+        <p>
+            You find below a list of awesome people who contributed to one or
+            more of our open source projects
+        </p>
+
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text">
+                <i class="bi bi-search"></i>
+            </span>
+            <input type="text" class="form-control" placeholder="Username" />
+        </div>
+    </main>
+</header>
+
+<style>
+    header {
+        width: 100%;
+        min-height: 250px;
+        height: auto;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+        background-color: var(--bg-color);
+        border-bottom: 2px solid var(--border-color);
+
+        background-size: 20px 20px;
+        background-image: linear-gradient(
+                to right,
+                #23262d 1px,
+                transparent 1px
+            ),
+            linear-gradient(to bottom, #23262d 1px, transparent 1px);
+        background-position: top center;
+        image-rendering: pixelated;
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent,
+            10%,
+            rgb(255, 255, 255),
+            90%,
+            transparent
+        );
+    }
+
+    header main h1 {
+        color: var(--text-color-1);
+        text-transform: uppercase;
+        font-size: 4rem;
+        font-weight: 100;
+        letter-spacing: 1rem;
+        text-align: center;
+    }
+
+    header main p {
+        color: var(--text-color-2);
+    }
+
+    header input[type="text"],
+    header .input-group-text {
+        background-color: var(--input-bg-color);
+        border: 1px solid var(--border-color-2);
+        color: var(--text-color-2);
+    }
+</style>

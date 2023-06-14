@@ -1,0 +1,134 @@
+---
+const { user } = Astro.props;
+---
+
+<div class="userCard">
+    <div class="userAvatar">
+        <img src={user.picture.large} alt="userAvatar" class="roundAvatar" />
+        <!-- <img src={user.picture.large} alt="userAvatar" class="animatedAvatar" /> -->
+    </div>
+    <h3 class="userUserName">{user.name.first} {user.name.last}</h3>
+
+    <div class="hoverOverlay"></div>
+    <button class="callToAction btn btn-outline-secondary">view profile</button>
+</div>
+
+<style lang="scss">
+    .userCard {
+        width: 100%;
+        max-height: 200px;
+        min-height: 200px;
+        background-color: var(--bg-color-2);
+        border: 1px solid var(--border-color-2);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        position: relative;
+
+        .userAvatar {
+            width: 100%;
+            text-align: center;
+
+            .roundAvatar {
+                width: 100%;
+                transform: scale(0.4);
+                border-radius: 50%;
+                margin: 0 auto;
+                position: relative;
+                top: -2rem;
+            }
+        }
+
+        .userUserName {
+            width: fit-content;
+            display: block;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 200;
+            color: var(--text-color-1);
+
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .callToAction {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-size: 0.8rem;
+            text-transform: capitalize;
+            color: var(--text-color-1);
+            z-index: 10;
+        }
+
+        .hoverOverlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 8;
+            display: none;
+        }
+    }
+
+    // ANIMATIONS
+    .userCard {
+        &:hover .userUserName {
+            display: none;
+        }
+        &:hover .roundAvatar {
+            top: 0;
+            animation: scale-up-center 0.2s ease-in-out;
+            animation-fill-mode: forwards;
+            animation-direction: alternate;
+        }
+
+        &:hover .callToAction,
+        &:hover .hoverOverlay {
+            display: block;
+        }
+    }
+
+    .reverseAnimation {
+        animation: scale-down-center 0.1s ease-in-out;
+        animation-fill-mode: forwards;
+        animation-direction: alternate;
+    }
+
+    @keyframes scale-up-center {
+        0% {
+        }
+        100% {
+            transform: scale(1.2);
+            border-radius: 0;
+        }
+    }
+    @keyframes scale-down-center {
+        0% {
+            transform: scale(1.2);
+            border-radius: 0;
+        }
+        100% {
+            transform: scale(0.4);
+            border-radius: 50%;
+        }
+    }
+</style>
+
+<script>
+    const userCards = document.querySelectorAll(".userCard");
+
+    userCards.forEach((card) => {
+        card?.addEventListener("mouseout", () => {
+            card.querySelector(".roundAvatar")?.classList.add(
+                "reverseAnimation"
+            );
+        });
+    });
+</script>
