@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/animejs': ^3.1.7
   animejs: ^3.2.1
   astro: ^2.5.6
   sass: ^1.63.3
@@ -10,6 +11,7 @@ dependencies:
   astro: 2.6.1_sass@1.63.3
 
 devDependencies:
+  '@types/animejs': 3.1.7
   sass: 1.63.3
 
 packages:
@@ -616,6 +618,10 @@ packages:
       picocolors: 1.0.0
       tslib: 2.5.3
     dev: false
+
+  /@types/animejs/3.1.7:
+    resolution: {integrity: sha512-kFSyjM+fLo3oE9noWEtUvF82ttN8fTrKohiEMIrSzEzEjnsCmtO0rBCUQBlSPEb2w8vfN+v4/Zo0tK21Bgmq4g==}
+    dev: true
 
   /@types/babel__core/7.20.1:
     resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
